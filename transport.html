@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus University - Campus Transport</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header and Navigation Bar -->
+    <header class="navbar">
+        <div class="brand-container">
+            <img src="OIP (1).jpg" alt="Indus Logo" class="brand-logo">
+            <a href="index.html" class="logo" style="color: darkblue; text-decoration: none;"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="index.html" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="directory-container">
+        <!-- Back to Dashboard Link -->
+        <a href="dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+
+        <div class="portal-box">
+            <h2>Campus Transport &amp; Bus Routes</h2>
+            <p class="desc">Official university bus schedule, morning routes, and designated arrival timings.</p>
+
+            <!-- Clean Table with Exact 7 Routes (No sub-stops in table) -->
+            <div class="table-wrapper">
+                <table class="directory-table">
+                    <thead>
+                        <tr>
+                            <th>Bus Number</th>
+                            <th>Main Route</th>
+                            <th>Timings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>Bus 01</b></td>
+                            <td>Nikol Route</td>
+                            <td>7:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td><b>Bus 02</b></td>
+                            <td>Bopal Route</td>
+                            <td>7:15 AM</td>
+                        </tr>
+                        <tr>
+                            <td><b>Bus 03</b></td>
+                            <td>Chandkheda Route</td>
+                            <td>7:30 AM</td>
+                        </tr>
+                        <tr>
+                            <td><b>Bus 04</b></td>
+                            <td>Maninagar Route</td>
+                            <td>7:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td><b>Bus 05</b></td>
+                            <td>Gota Route</td>
+                            <td>7:45 AM</td>
+                        </tr>
+                        <tr>
+                            <td><b>Bus 06</b></td>
+                            <td>Naranpura Route</td>
+                            <td>7:20 AM</td>
+                        </tr>
+                        <tr>
+                            <td><b>Bus 07</b></td>
+                            <td>Vastrapur Route</td>
+                            <td>7:10 AM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Advanced Dynamic Transport Fee & Pick-up Calculator -->
+            <div style="margin-top: 40px; border-top: 2px solid lightgray; padding-top: 25px;">
+                <h2>Transport Fee &amp; Pick-up Calculator</h2>
+                <p class="desc">Select your route and pick-up stop to check both the semester fee and exact morning bus
+                    arrival time.</p>
+
+                <!-- Area Dropdown -->
+                <div class="input-group">
+                    <label for="areaSelect">Select Main Route Area:</label>
+                    <select id="areaSelect" onchange="updateStops()">
+                        <option value="">Select Area</option>
+                        <option value="Nikol Route">Nikol Route</option>
+                        <option value="Bopal Route">Bopal Route</option>
+                        <option value="Chandkheda Route">Chandkheda Route</option>
+                        <option value="Maninagar Route">Maninagar Route</option>
+                        <option value="Gota Route">Gota Route</option>
+                        <option value="Naranpura Route">Naranpura Route</option>
+                        <option value="Vastrapur Route">Vastrapur Route</option>
+                    </select>
+                </div>
+
+                <!-- Stop Dropdown (populated dynamically) -->
+                <div class="input-group">
+                    <label for="stopSelect">Select Pickup Stop:</label>
+                    <select id="stopSelect" onchange="updateFeeAndTime()">
+                        <option value="">-- Choose Route Area First --</option>
+                    </select>
+                </div>
+
+                <!-- Dynamic Fee & Pick-up Time Display -->
+                <div class="fee-card">
+                    <h3 id="feeText">Semester Fee: Rs. 0</h3>
+                    <p id="timeText" style="color: crimson; font-weight: bold; font-size: 16px; margin-top: 8px;">
+                        Pick-up Time: --</p>
+                </div>
+            </div>
+
+            <!-- Request Bus Pass Form Section -->
+            <div style="margin-top: 40px; border-top: 2px solid lightgray; padding-top: 25px;">
+                <h2>Request Bus Pass</h2>
+                <p class="desc">Apply for an official Indus University semester bus pass.</p>
+
+                <form id="busPassForm" onsubmit="submitBusPass(event)">
+                    <!-- Name Input -->
+                    <div class="input-group">
+                        <label for="passName">Full Name:</label>
+                        <input type="text" id="passName" placeholder="Enter student full name" required>
+                    </div>
+
+                    <!-- Enrollment Input -->
+                    <div class="input-group">
+                        <label for="passEnrollment">Enrollment Number:</label>
+                        <input type="text" id="passEnrollment" placeholder="Enter student enrollment number" required>
+                    </div>
+
+                    <!-- Semester Dropdown -->
+                    <div class="input-group">
+                        <label for="passSemester">Semester:</label>
+                        <select id="passSemester" required>
+                            <option value="">-- Select Semester --</option>
+                            <option value="1">Semester 1</option>
+                            <option value="2">Semester 2</option>
+                            <option value="3">Semester 3</option>
+                            <option value="4">Semester 4</option>
+                            <option value="5">Semester 5</option>
+                            <option value="6">Semester 6</option>
+                            <option value="7">Semester 7</option>
+                            <option value="8">Semester 8</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="calc-btn">Submit Request</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Global Standard Footer -->
+    <footer>
+        <p>&copy; 2026 Indus University - Student Portal</p>
+    </footer>
+
+    <!-- Beginner-friendly Vanilla JavaScript Dynamic Calculator & Form Reset -->
+    <script>
+        // Nested JavaScript Object storing both fee and pick-up time per stop
+        const routeData = {
+            "Nikol Route": {
+                "Nikol Gam": { fee: 12000, time: "6:45 AM" },
+                "Thakkarbapanagar": { fee: 11500, time: "6:55 AM" },
+                "Bapunagar Approach": { fee: 11000, time: "7:05 AM" }
+            },
+            "Bopal Route": {
+                "South Bopal": { fee: 15000, time: "6:50 AM" },
+                "Bopal Cross Road": { fee: 14500, time: "7:05 AM" },
+                "Iskcon Cross Road": { fee: 13000, time: "7:20 AM" }
+            },
+            "Chandkheda Route": {
+                "Chandkheda Bus Stand": { fee: 13500, time: "7:00 AM" },
+                "Visat Circle": { fee: 13000, time: "7:15 AM" },
+                "Motera": { fee: 12500, time: "7:25 AM" }
+            },
+            "Maninagar Route": {
+                "Maninagar Station": { fee: 14000, time: "6:45 AM" },
+                "Kankaria Lake": { fee: 13500, time: "7:00 AM" },
+                "Danilimda": { fee: 12500, time: "7:15 AM" }
+            },
+            "Gota Route": {
+                "Gota Cross Road": { fee: 12500, time: "7:15 AM" },
+                "Vande Mataram": { fee: 12000, time: "7:25 AM" },
+                "Silver Star": { fee: 11500, time: "7:35 AM" }
+            },
+            "Naranpura Route": {
+                "Naranpura Post Office": { fee: 13000, time: "6:55 AM" },
+                "Ankur Char Rasta": { fee: 12500, time: "7:05 AM" },
+                "Pallav Cross Road": { fee: 12000, time: "7:15 AM" }
+            },
+            "Vastrapur Route": {
+                "Vastrapur Lake": { fee: 14000, time: "6:50 AM" },
+                "IIM Ahmedabad": { fee: 13500, time: "7:00 AM" },
+                "Himmatlal Park": { fee: 13000, time: "7:10 AM" }
+            }
+        };
+
+        // Function 1: Populate stops dropdown based on selected route
+        function updateStops() {
+            var area = document.getElementById("areaSelect").value;
+            var stopSelect = document.getElementById("stopSelect");
+            var feeText = document.getElementById("feeText");
+            var timeText = document.getElementById("timeText");
+
+            // Reset outputs
+            feeText.innerText = "Semester Fee: Rs. 0";
+            timeText.innerText = "Pick-up Time: --";
+
+            // If user unselects or chooses default
+            if (area === "" || !routeData[area]) {
+                stopSelect.innerHTML = "<option value=''>-- Choose Route Area First --</option>";
+                return;
+            }
+
+            // Build stop options from the keys of the chosen route
+            var stops = routeData[area];
+            var optionsHTML = "<option value=''>-- Select Stop --</option>";
+
+            for (var stopName in stops) {
+                optionsHTML += "<option value='" + stopName + "'>" + stopName + "</option>";
+            }
+
+            stopSelect.innerHTML = optionsHTML;
+        }
+
+        // Function 2: Update both Fee and Pick-up Time dynamically
+        function updateFeeAndTime() {
+            var area = document.getElementById("areaSelect").value;
+            var stop = document.getElementById("stopSelect").value;
+            var feeText = document.getElementById("feeText");
+            var timeText = document.getElementById("timeText");
+
+            if (area && stop && routeData[area] && routeData[area][stop]) {
+                var stopDetails = routeData[area][stop];
+                feeText.innerText = "Semester Fee: Rs. " + stopDetails.fee;
+                timeText.innerText = "Pick-up Time: " + stopDetails.time;
+            } else {
+                feeText.innerText = "Semester Fee: Rs. 0";
+                timeText.innerText = "Pick-up Time: --";
+            }
+        }
+
+        // Function 3: Handle Bus Pass form submission
+        function submitBusPass(event) {
+            event.preventDefault();
+            alert('Bus Pass Request Submitted to Admin!');
+            document.getElementById("busPassForm").reset();
+        }
+    </script>
+
+</body>
+
+</html>

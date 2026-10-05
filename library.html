@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus University - Physical Library</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header and Navigation Bar -->
+    <header class="navbar">
+        <div class="brand-container">
+            <img src="OIP (1).jpg" alt="Indus Logo" class="brand-logo">
+            <a href="index.html" class="logo" style="color: darkblue; text-decoration: none;"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <button class="logout-btn" onclick="handleLogout(event)">Logout</button>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="directory-container">
+        <!-- Back to Dashboard Link -->
+        <a href="dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+
+        <div class="portal-box">
+            <h2>Central Physical Library</h2>
+            <p class="desc">Search academic textbooks, view live campus inventory, and request book issues.</p>
+
+            <!-- Search and Category Filter Row -->
+            <div class="filter-row">
+                <input type="text" id="searchInput" onkeyup="filterBooks()"
+                    placeholder="Search by book title (e.g. Web Technology, Algorithms)...">
+                <select id="categoryFilter" onchange="filterBooks()">
+                    <option value="All">All Categories</option>
+                    <option value="IT">IT</option>
+                    <option value="CS">CS</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Management">Management</option>
+                </select>
+            </div>
+
+            <!-- Dynamic Books Grid -->
+            <div id="bookGrid" class="book-grid">
+                <!-- Book cards are dynamically rendered by JavaScript -->
+            </div>
+
+            <!-- My Issued Books Section -->
+            <div class="issued-books-section">
+                <h2>My Issued Books (ID #57)</h2>
+                <p class="desc">Active books borrowed from the university central library.</p>
+
+                <ul class="issued-list">
+                    <li class="issued-item">
+                        <div>
+                            <b>Data Structures &amp; Algorithms in Java</b>
+                            <p style="color: dimgray; font-size: 13px; margin: 3px 0 0 0;">Accession No: CS-2041 |
+                                Borrowed Date: Sep 20, 2026</p>
+                        </div>
+                        <span class="deadline-tag">Return Deadline: Oct 15, 2026</span>
+                    </li>
+                    <li class="issued-item">
+                        <div>
+                            <b>Operating System Concepts (Silberschatz)</b>
+                            <p style="color: dimgray; font-size: 13px; margin: 3px 0 0 0;">Accession No: IT-1189 |
+                                Borrowed Date: Sep 25, 2026</p>
+                        </div>
+                        <span class="deadline-tag">Return Deadline: Oct 22, 2026</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Global Standard Footer -->
+    <footer>
+        <p>&copy; 2026 Indus University - Student Portal</p>
+    </footer>
+
+    <!-- Beginner-friendly Vanilla JavaScript Inventory Logic -->
+    <script>
+        // Exact Book Catalog Array of Objects with Multiple Categories
+        const books = [
+            { id: 0, title: 'Web Technology', category: 'IT, CS', copies: 5, restockDate: null, requested: false },
+            { id: 1, title: 'Computer Graphics', category: 'IT', copies: 3, restockDate: null, requested: false },
+            { id: 2, title: 'Design and Analysis of Algorithms', category: 'IT, CS', copies: 4, restockDate: null, requested: false },
+            { id: 3, title: 'Computer Networks', category: 'IT, CS', copies: 2, restockDate: null, requested: false },
+            { id: 4, title: 'Programming for Scientific Computing', category: 'IT, CS', copies: 6, restockDate: null, requested: false },
+            { id: 5, title: 'Energy Economy and Waste', category: 'Mechanical', copies: 0, restockDate: 'Oct 18, 2026', requested: false },
+            { id: 6, title: 'Engineering Thermodynamics', category: 'Mechanical', copies: 3, restockDate: null, requested: false },
+            { id: 7, title: 'Fluid Mechanics', category: 'Mechanical', copies: 2, restockDate: null, requested: false },
+            { id: 8, title: 'Principles of Management', category: 'Management', copies: 4, restockDate: null, requested: false },
+            { id: 9, title: 'Business Economics', category: 'Management', copies: 5, restockDate: null, requested: false }
+        ];
+
+        // Function 1: Render book cards with split department tags and inventory controls
+        function renderBooks(bookList) {
+            var grid = document.getElementById("bookGrid");
+
+            if (bookList.length === 0) {
+                grid.innerHTML = "<p style='color: dimgray; padding: 20px 0;'>No books found matching your search.</p>";
+                return;
+            }
+
+            var html = "";
+            for (var i = 0; i < bookList.length; i++) {
+                var book = bookList[i];
+
+                // Split category string by comma into an array of individual departments
+                var deptArray = book.category.split(',');
+                var deptTagsHTML = "";
+                for (var d = 0; d < deptArray.length; d++) {
+                    var deptName = deptArray[d].trim();
+                    deptTagsHTML += "<span class='book-type-badge' style='background-color: aliceblue; border: 1px solid darkblue; color: darkblue; margin-right: 5px;'>" + deptName + "</span>";
+                }
+
+                html += "<div class='book-card'>";
+                html += "  <div>";
+                html += "    <div class='book-badges'>";
+                html += deptTagsHTML;
+                html += "      <span class='book-type-badge' style='background-color: whitesmoke; border: 1px solid lightgray; color: dimgray;'>Physical Book</span>";
+                html += "    </div>";
+                html += "    <h3>" + book.title + "</h3>";
+                html += "    <p>Department: " + book.category + " | Hardcover Edition</p>";
+                html += "  </div>";
+
+                // Conditional Inventory Rendering
+                if (book.requested) {
+                    // Already requested by the student
+                    html += "  <div>";
+                    html += "    <p style='color: green; font-weight: bold; margin-bottom: 8px; font-size: 14px;'>Available Copies: " + book.copies + "</p>";
+                    html += "    <button type='button' class='btn-issue' style='background-color: green; color: white;' disabled>Requested</button>";
+                    html += "  </div>";
+                } else if (book.copies > 0) {
+                    // Available in stock
+                    html += "  <div>";
+                    html += "    <p style='color: green; font-weight: bold; margin-bottom: 8px; font-size: 14px;'>Available Copies: " + book.copies + "</p>";
+                    html += "    <button type='button' class='btn-issue' style='background-color: crimson; color: white;' onclick='issueBook(" + book.id + ")'>Request to Issue</button>";
+                    html += "  </div>";
+                } else {
+                    // Out of stock
+                    html += "  <div>";
+                    html += "    <p style='color: red; font-weight: bold; font-size: 14px; margin-top: 10px; line-height: 1.4;'>Currently Not Available. Back in stock on: " + book.restockDate + "</p>";
+                    html += "  </div>";
+                }
+
+                html += "</div>";
+            }
+
+            grid.innerHTML = html;
+        }
+
+        // Function 2: Filter books using .filter() with .includes() for multiple categories
+        function filterBooks() {
+            var searchKeyword = document.getElementById("searchInput").value.toLowerCase();
+            var selectedCategory = document.getElementById("categoryFilter").value;
+
+            var filteredBooks = books.filter(function (book) {
+                var matchesTitle = book.title.toLowerCase().includes(searchKeyword);
+                // Check if book.category includes selectedCategory string (e.g., 'IT, CS' includes 'CS')
+                var matchesCategory = (selectedCategory === "All" || book.category.includes(selectedCategory));
+                return matchesTitle && matchesCategory;
+            });
+
+            renderBooks(filteredBooks);
+        }
+
+        // Function 3: Dynamic inventory deduction when 'Request to Issue' is clicked
+        function issueBook(bookId) {
+            // Find book in the main array
+            var book = books.find(function (b) {
+                return b.id === bookId;
+            });
+
+            if (book && book.copies > 0 && !book.requested) {
+                // 1. Decrease specific book's copies by 1
+                book.copies--;
+
+                // 2. Mark as requested to lock button state
+                book.requested = true;
+
+                // 3. Immediately re-render list so UI updates the available count and button
+                filterBooks();
+            }
+        }
+
+        // Function 4: Logout handler
+        function handleLogout(event) {
+            event.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = "index.html";
+        }
+
+        // Initial render on page load
+        renderBooks(books);
+    </script>
+
+</body>
+
+</html>

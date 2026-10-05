@@ -1,0 +1,974 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page Background and Text */
+body {
+    background-color: whitesmoke;
+    color: black;
+    line-height: 1.6;
+}
+
+/* Top Announcement Ticker */
+.top-ticker {
+    background-color: midnightblue;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.ticker-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-continuous 35s linear infinite;
+}
+
+@keyframes scroll-continuous {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Navigation Bar (Clean White Background) */
+.navbar {
+    background-color: white;
+    color: darkblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    border-bottom: 1px solid lightgray;
+}
+
+/* Brand Logo & Name Container */
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: darkblue;
+    letter-spacing: 1px;
+}
+
+.logo h2 {
+    color: darkblue;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a,
+.nav-links span {
+    color: darkblue;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: crimson;
+}
+
+.nav-links .active {
+    color: darkblue;
+    border-bottom: 2px solid crimson;
+    padding-bottom: 2px;
+}
+
+/* Logout Button */
+.logout-btn {
+    background-color: crimson;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-left: 20px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logout-btn:hover {
+    background-color: maroon;
+}
+
+/* Hero Section (Midnightblue Background) */
+.hero {
+    background-color: midnightblue;
+    color: white;
+    text-align: center;
+    padding: 75px 20px 65px 20px;
+    border-bottom: 4px solid crimson;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 16px;
+    color: white;
+}
+
+.hero h1 .highlight {
+    color: crimson;
+}
+
+.hero p.hero-subtitle {
+    font-size: 18px;
+    color: white;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    margin-bottom: 45px;
+}
+
+.btn-get-started {
+    display: inline-block;
+    background-color: crimson;
+    color: white;
+    text-decoration: none;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin: 0 8px;
+}
+
+.btn-get-started:hover {
+    background-color: maroon;
+}
+
+.btn-explore,
+.explore-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    text-decoration: none;
+    padding: 10px 26px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin: 0 8px;
+}
+
+.btn-explore:hover,
+.explore-btn:hover {
+    background-color: white;
+    color: midnightblue;
+}
+
+/* Stats Bar (White Floating Boxes on Midnightblue) */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 850px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 18px 25px;
+    flex: 1;
+    min-width: 220px;
+    text-align: center;
+    box-shadow: 0 6px 18px black;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.stat-box:hover {
+    border-color: crimson;
+    box-shadow: 0 10px 24px black;
+    transform: translateY(-3px);
+}
+
+.stat-box h3 {
+    font-size: 20px;
+    color: darkblue;
+    margin-bottom: 4px;
+}
+
+.stat-box p {
+    font-size: 13px;
+    color: darkblue;
+}
+
+/* Services Section (2x2 Grid) */
+.services-section,
+#services-section {
+    background-color: whitesmoke;
+    padding: 60px 20px;
+}
+
+.services-title {
+    text-align: center;
+    color: midnightblue;
+    margin-bottom: 40px;
+    font-size: 28px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-top: 4px solid darkblue;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 10px lightgray;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s, border-top-color 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px darkgray;
+    border-top-color: crimson;
+}
+
+.service-card h3 {
+    color: darkblue;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.service-card p {
+    color: dimgray;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.service-card .card-link-text {
+    color: crimson;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.service-card:hover .card-link-text {
+    color: maroon;
+}
+
+@media (max-width: 720px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Rounded Login Button in Nav */
+.nav-links .login-btn-round {
+    background-color: crimson;
+    color: white;
+    padding: 9px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+.nav-links .login-btn-round:hover {
+    background-color: maroon;
+    color: white;
+}
+
+.about p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: dimgray;
+    font-size: 16px;
+}
+
+/* Footer Section */
+footer {
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-top: 3px solid crimson;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Login Page Styles */
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 70vh;
+}
+
+.login-card {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-top: 5px solid crimson;
+    border-radius: 8px;
+    padding: 35px 30px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+}
+
+.login-card h2 {
+    color: darkblue;
+    margin-bottom: 8px;
+}
+
+.login-card .subtitle {
+    color: dimgray;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: darkblue;
+    margin-bottom: 6px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    outline: none;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: darkblue;
+}
+
+.login-submit-btn {
+    width: 100%;
+    background-color: crimson;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-submit-btn:hover {
+    background-color: maroon;
+}
+
+.hint-text {
+    margin-top: 15px;
+    font-size: 13px;
+    color: dimgray;
+}
+
+/* Dashboard Styles */
+.dashboard-welcome {
+    background-color: aliceblue;
+    padding: 30px 40px;
+    border-bottom: 2px solid lightgray;
+    text-align: center;
+}
+
+.dashboard-welcome h1 {
+    color: darkblue;
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.dashboard-welcome p {
+    /* color: dimgray; */
+    font-size: 16px;
+}
+
+.dashboard-section {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 60vh;
+}
+
+.dashboard-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.dashboard-card {
+    display: block;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-top: 5px solid darkblue;
+    border-radius: 8px;
+    padding: 30px 25px;
+    width: 280px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.dashboard-card:hover {
+    border-top-color: crimson;
+}
+
+.dashboard-card h3 {
+    color: darkblue;
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.dashboard-card p {
+    color: dimgray;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.dashboard-card .card-link-text {
+    color: crimson;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.dashboard-card:hover .card-link-text {
+    color: maroon;
+}
+
+.logout-btn {
+    background-color: crimson;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background-color: maroon;
+    color: white;
+}
+
+/* Feature Page & Calculator Styles */
+.page-container {
+    padding: 40px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 70vh;
+}
+
+.portal-box {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-top: 5px solid darkblue;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.portal-box h2 {
+    color: darkblue;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.portal-box .desc {
+    color: dimgray;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.calc-btn {
+    width: 100%;
+    background-color: darkblue;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.calc-btn:hover {
+    background-color: navy;
+}
+
+.result-container {
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    display: none;
+}
+
+.result-safe {
+    background-color: honeydew;
+    color: green;
+    border: 2px solid green;
+}
+
+.result-danger {
+    background-color: mistyrose;
+    color: red;
+    border: 2px solid red;
+}
+
+.result-container h3 {
+    margin-bottom: 6px;
+}
+
+.back-link {
+    display: inline-block;
+    color: darkblue;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.back-link:hover {
+    color: crimson;
+}
+
+.anonymous-banner {
+    background-color: mistyrose;
+    color: maroon;
+    border: 1px solid crimson;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* Directory and Table Styles */
+.directory-container {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 70vh;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 15px;
+    border: 2px solid darkblue;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 20px;
+    background-color: white;
+    color: black;
+}
+
+.search-input:focus {
+    border-color: crimson;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+}
+
+.directory-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.directory-table th {
+    background-color: darkblue;
+    color: white;
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 15px;
+    border-bottom: 3px solid crimson;
+}
+
+.directory-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid lightgray;
+    color: black;
+    font-size: 14px;
+}
+
+.directory-table tr:nth-child(even) {
+    background-color: aliceblue;
+}
+
+.directory-table tr:hover {
+    background-color: lightgoldenrodyellow;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: crimson;
+    color: white;
+}
+
+.domain-tag {
+    font-weight: bold;
+    color: darkblue;
+}
+
+.email-link {
+    color: darkblue;
+    text-decoration: none;
+}
+
+.email-link:hover {
+    color: crimson;
+    text-decoration: underline;
+}
+
+/* Events & Notice Board Styles */
+.event-card {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-left: 6px solid crimson;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.event-card.past-card {
+    border-left-color: gray;
+    background-color: whitesmoke;
+}
+
+.event-badge {
+    display: inline-block;
+    background-color: crimson;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.past-badge {
+    background-color: gray;
+}
+
+.event-card h3 {
+    color: darkblue;
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+
+.event-card .event-meta {
+    color: maroon;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.event-card p {
+    color: dimgray;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.toggle-btn {
+    background-color: darkblue;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.toggle-btn:hover {
+    background-color: navy;
+}
+
+#pastEventsContainer {
+    display: none;
+    margin-top: 20px;
+}
+
+/* Fee Calculator Badge */
+.fee-card {
+    background-color: aliceblue;
+    border: 2px dashed darkblue;
+    border-radius: 6px;
+    padding: 15px 20px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.fee-card h3 {
+    color: darkblue;
+    font-size: 22px;
+}
+
+/* Attendance Dashboard & Percentage Styles */
+.badge-safe {
+    background-color: honeydew;
+    color: green;
+    border: 1px solid green;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    display: inline-block;
+}
+
+.badge-danger {
+    background-color: mistyrose;
+    color: red;
+    border: 1px solid red;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    display: inline-block;
+}
+
+.summary-card {
+    background-color: aliceblue;
+    border: 2px solid darkblue;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    display: none;
+}
+
+.summary-card h3 {
+    color: darkblue;
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+.summary-card p {
+    color: dimgray;
+    font-size: 16px;
+}
+
+/* Digital Library Styles */
+.filter-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.filter-row input {
+    flex: 2;
+    min-width: 200px;
+    padding: 10px 12px;
+    font-size: 15px;
+    border: 2px solid darkblue;
+    border-radius: 4px;
+    outline: none;
+    background-color: white;
+}
+
+.filter-row select {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px 12px;
+    font-size: 15px;
+    border: 2px solid darkblue;
+    border-radius: 4px;
+    outline: none;
+    background-color: white;
+}
+
+.book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.book-card {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-top: 4px solid darkblue;
+    border-radius: 6px;
+    padding: 20px;
+    width: calc(50% - 10px);
+    min-width: 260px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.book-card h3 {
+    color: darkblue;
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.book-card p {
+    color: dimgray;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.book-badges {
+    margin-bottom: 10px;
+}
+
+.book-type-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+.badge-ebook {
+    background-color: aliceblue;
+    color: darkblue;
+    border: 1px solid darkblue;
+}
+
+.badge-physical {
+    background-color: mistyrose;
+    color: maroon;
+    border: 1px solid crimson;
+}
+
+.btn-download {
+    display: inline-block;
+    background-color: darkblue;
+    color: white;
+    text-decoration: none;
+    padding: 9px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn-download:hover {
+    background-color: navy;
+}
+
+.btn-issue {
+    background-color: crimson;
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-issue:hover {
+    background-color: maroon;
+}
+
+.btn-issue:disabled {
+    cursor: not-allowed;
+}
+
+.issued-books-section {
+    margin-top: 40px;
+    border-top: 2px solid lightgray;
+    padding-top: 25px;
+}
+
+.issued-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.issued-item {
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    border-left: 5px solid darkblue;
+    padding: 12px 18px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.deadline-tag {
+    color: crimson;
+    font-weight: bold;
+    font-size: 14px;
+}

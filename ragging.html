@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus University - Anonymous Anti-Ragging Cell</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header and Navigation Bar -->
+    <header class="navbar">
+        <div class="brand-container">
+            <img src="OIP (1).jpg" alt="Indus Logo" class="brand-logo">
+            <a href="index.html" class="logo" style="color: darkblue; text-decoration: none;"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="index.html" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="page-container">
+        <!-- Back to Dashboard Link -->
+        <a href="dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+
+        <div class="portal-box">
+            <h2>Anonymous Anti-Ragging Cell</h2>
+            <p class="desc">Indus University maintains a strict zero-tolerance policy against ragging and harassment.
+            </p>
+
+            <!-- Confidentiality Notice Banner -->
+            <div class="anonymous-banner">
+                <b>100% Anonymous & Confidential</b><br>
+                This form does not collect your name, phone, student ID, or personal identity.
+            </div>
+
+            <!-- Anonymous Incident Reporting Form -->
+            <form id="raggingForm" onsubmit="submitAnonymousReport(event)">
+                <!-- Date of Incident -->
+                <div class="input-group">
+                    <label for="incidentDate">Date of Incident:</label>
+                    <input type="date" id="incidentDate" required>
+                </div>
+
+                <!-- Describe the Incident -->
+                <div class="input-group">
+                    <label for="incidentDetails">Describe the Incident:</label>
+                    <textarea id="incidentDetails" rows="7"
+                        placeholder="Please describe what happened, the location (e.g. cafeteria, bus, hostel), and any relevant specifics. Do not include your personal details."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="login-submit-btn">Submit Report Anonymously</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Indus University - Student Portal</p>
+    </footer>
+
+    <!-- Beginner-friendly Vanilla JavaScript Form Handler -->
+    <script>
+        function submitAnonymousReport(event) {
+            // Prevent standard form submission reload
+            event.preventDefault();
+
+            // Display assurance confirmation message
+            alert('Report submitted securely and anonymously. Action will be taken.');
+
+            // Clear the textarea and input fields
+            document.getElementById("raggingForm").reset();
+        }
+    </script>
+
+</body>
+
+</html>

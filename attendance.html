@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus University - Attendance Dashboard</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header and Navigation Bar -->
+    <header class="navbar">
+        <div class="brand-container">
+            <img src="OIP (1).jpg" alt="Indus Logo" class="brand-logo">
+            <a href="index.html" class="logo" style="color: darkblue; text-decoration: none;"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="index.html" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="directory-container">
+        <!-- Back to Dashboard Link -->
+        <a href="dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+
+        <div class="portal-box">
+            <h2>Subject-wise Attendance Dashboard</h2>
+            <p class="desc">Live semester attendance records with minimum 75% criterion tracking.</p>
+
+            <!-- Dynamically Populated Attendance Table -->
+            <div class="table-wrapper">
+                <table class="directory-table" id="attendanceTable">
+                    <thead>
+                        <tr>
+                            <th>Subject Name</th>
+                            <th>Attended</th>
+                            <th>Total Held</th>
+                            <th>Percentage</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendanceTableBody">
+                        <!-- Populated dynamically via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Overall Total Calculator Button -->
+            <div style="text-align: center; margin-top: 25px;">
+                <button type="button" class="calc-btn" style="max-width: 320px;"
+                    onclick="calculateOverallAttendance()">Calculate Overall Attendance</button>
+            </div>
+
+            <!-- Overall Summary Display Area -->
+            <div id="overallSummary" class="summary-card">
+                <h3 id="overallPercentageText">Overall Attendance: 0%</h3>
+                <p id="overallFractionText">Total Fraction: 0 / 0</p>
+                <p id="overallStatusText" style="margin-top: 5px; font-weight: bold;"></p>
+            </div>
+
+            <!-- Future Attendance Prediction Section -->
+            <div style="margin-top: 45px; border-top: 2px solid lightgray; padding-top: 30px;">
+                <h2>Predict Future Attendance</h2>
+                <p class="desc">Calculate how attending or missing upcoming lectures will impact your attendance
+                    percentage.</p>
+
+                <!-- Subject Selection Dropdown -->
+                <div class="input-group">
+                    <label for="subjectSelect">Select Subject:</label>
+                    <select id="subjectSelect">
+                        <!-- Populated dynamically from JavaScript array -->
+                    </select>
+                </div>
+
+                <!-- Extra Classes to Attend -->
+                <div class="input-group">
+                    <label for="extraAttended">Extra Classes to Attend (Present):</label>
+                    <input type="number" id="extraAttended" min="0" value="0" placeholder="e.g. 5">
+                </div>
+
+                <!-- Extra Classes to be Absent -->
+                <div class="input-group">
+                    <label for="extraAbsent">Extra Classes to be Absent (Bunk):</label>
+                    <input type="number" id="extraAbsent" min="0" value="0" placeholder="e.g. 2">
+                </div>
+
+                <button type="button" class="calc-btn" onclick="predictAttendance()">Calculate Future
+                    Attendance</button>
+
+                <!-- Prediction Result Box -->
+                <div id="predictionResultBox" class="result-container">
+                    <h3 id="predictedPercentageText">Predicted Attendance: 0%</h3>
+                    <p id="predictionDetailsText"></p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Global Standard Footer -->
+    <footer>
+        <p>&copy; 2026 Indus University - Student Portal</p>
+    </footer>
+
+    <!-- Beginner-friendly Vanilla JavaScript Logic -->
+    <script>
+        // Exact Array of Objects for Semester Subjects & Attendance
+        const attendanceData = [
+            { subject: "PROGRAMMING FOR SCIENTIFIC (Prac)", attended: 11, total: 12 },
+            { subject: "WEB TECHNOLOGY - PRACTICAL", attended: 11, total: 11 },
+            { subject: "COMPUTER GRAPHICS - PRACTICAL", attended: 11, total: 11 },
+            { subject: "DESIGN AND ANALYSIS OF ALGO (Prac)", attended: 7, total: 8 },
+            { subject: "ENERGY ECONOMY AND WASTE", attended: 24, total: 31 },
+            { subject: "COMPUTER GRAPHICS - LECTURE", attended: 26, total: 32 },
+            { subject: "COMPUTER NETWORKS - PRACTICAL", attended: 12, total: 13 },
+            { subject: "WEB TECHNOLOGY - LECTURE", attended: 37, total: 38 },
+            { subject: "PROGRAMMING FOR SCIENTIFIC (Lec)", attended: 35, total: 37 },
+            { subject: "COMPUTER NETWORKS - LECTURE", attended: 28, total: 29 },
+            { subject: "DESIGN AND ANALYSIS OF ALGO (Lec)", attended: 9, total: 10 }
+        ];
+
+        // Function 1: Render subjects dynamically into the table and dropdown
+        function renderAttendanceDashboard() {
+            var tbody = document.getElementById("attendanceTableBody");
+            var select = document.getElementById("subjectSelect");
+
+            var tableRowsHTML = "";
+            var selectOptionsHTML = "<option value=''>-- Choose Subject --</option>";
+
+            for (var i = 0; i < attendanceData.length; i++) {
+                var item = attendanceData[i];
+                var pct = ((item.attended / item.total) * 100).toFixed(1);
+                var isSafe = pct >= 75;
+
+                // Build table row
+                tableRowsHTML += "<tr>";
+                tableRowsHTML += "<td><b>" + item.subject + "</b></td>";
+                tableRowsHTML += "<td>" + item.attended + "</td>";
+                tableRowsHTML += "<td>" + item.total + "</td>";
+                tableRowsHTML += "<td><b>" + pct + "%</b></td>";
+                if (isSafe) {
+                    tableRowsHTML += "<td><span class='badge-safe'>Safe</span></td>";
+                } else {
+                    tableRowsHTML += "<td><span class='badge-danger'>Low (&lt; 75%)</span></td>";
+                }
+                tableRowsHTML += "</tr>";
+
+                // Build select option
+                selectOptionsHTML += "<option value='" + i + "'>" + item.subject + "</option>";
+            }
+
+            tbody.innerHTML = tableRowsHTML;
+            select.innerHTML = selectOptionsHTML;
+        }
+
+        // Function 2: Calculate Overall Total dynamically using a loop
+        function calculateOverallAttendance() {
+            var totalAttended = 0;
+            var totalClasses = 0;
+
+            // Loop through the entire array of objects
+            for (var i = 0; i < attendanceData.length; i++) {
+                totalAttended += attendanceData[i].attended;
+                totalClasses += attendanceData[i].total;
+            }
+
+            var overallPercentage = ((totalAttended / totalClasses) * 100).toFixed(2);
+
+            // Display results
+            var summaryCard = document.getElementById("overallSummary");
+            var pctText = document.getElementById("overallPercentageText");
+            var fracText = document.getElementById("overallFractionText");
+            var statusText = document.getElementById("overallStatusText");
+
+            summaryCard.style.display = "block";
+            pctText.innerText = "Overall Attendance: " + overallPercentage + "%";
+            fracText.innerText = "Total Classes: " + totalAttended + " / " + totalClasses;
+
+            if (overallPercentage >= 75) {
+                statusText.style.color = "green";
+                statusText.innerText = "Status: Eligible for Exams (Safe)";
+            } else {
+                statusText.style.color = "red";
+                statusText.innerText = "Status: Shortage Warning (Below 75%)";
+            }
+        }
+
+        // Function 3: Predict Future Attendance
+        function predictAttendance() {
+            var select = document.getElementById("subjectSelect");
+            var index = select.value;
+
+            if (index === "") {
+                alert("Please select a subject from the dropdown.");
+                return;
+            }
+
+            var extraAttended = Number(document.getElementById("extraAttended").value) || 0;
+            var extraAbsent = Number(document.getElementById("extraAbsent").value) || 0;
+
+            if (extraAttended < 0 || extraAbsent < 0) {
+                alert("Please enter non-negative numbers for classes.");
+                return;
+            }
+
+            var subjectObj = attendanceData[index];
+            var currentAttended = subjectObj.attended;
+            var currentTotal = subjectObj.total;
+
+            // User-specified formula: ((Current Attended + Extra Attended) / (Current Total Held + Extra Attended + Extra Absent)) * 100
+            var newAttended = currentAttended + extraAttended;
+            var newTotal = currentTotal + extraAttended + extraAbsent;
+            var predictedPct = ((newAttended / newTotal) * 100).toFixed(2);
+
+            // Display result
+            var resultBox = document.getElementById("predictionResultBox");
+            var pctText = document.getElementById("predictedPercentageText");
+            var detailsText = document.getElementById("predictionDetailsText");
+
+            resultBox.style.display = "block";
+            pctText.innerText = "Predicted Attendance: " + predictedPct + "%";
+            detailsText.innerText = subjectObj.subject + " -> Projected Classes: " + newAttended + " / " + newTotal;
+
+            if (predictedPct >= 75) {
+                resultBox.className = "result-container result-safe";
+                pctText.style.color = "green";
+                detailsText.style.color = "green";
+            } else {
+                resultBox.className = "result-container result-danger";
+                pctText.style.color = "red";
+                detailsText.style.color = "red";
+            }
+        }
+
+        // Initialize table and dropdown on page load
+        renderAttendanceDashboard();
+    </script>
+
+</body>
+
+</html>

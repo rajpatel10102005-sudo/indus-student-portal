@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus University - Student Dashboard</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header and Navigation Bar -->
+    <header class="navbar">
+        <div class="brand-container">
+            <img src="OIP (1).jpg" alt="Indus Logo" class="brand-logo">
+            <a href="index.html" class="logo" style="color: darkblue; text-decoration: none;"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <button class="logout-btn" onclick="handleLogout(event)">Logout</button>
+        </nav>
+    </header>
+
+    <!-- Welcome Banner -->
+    <section class="dashboard-welcome">
+        <h1>Student Portal Dashboard</h1>
+        <p>Logged in as: <b>Student ID #IU2441220057</b> | Select a service below to proceed</p>
+    </section>
+
+    <!-- Dashboard Services Grid -->
+    <main class="dashboard-section">
+        <h2 class="section-title">Academic & Student Services</h2>
+
+        <div class="dashboard-grid">
+            <!-- Feature Card 1: Attendance Calculator -->
+            <a href="attendance.html" class="dashboard-card">
+                <h3>Attendance Calculator</h3>
+                <p>Calculate your subject-wise attendance percentage and see how many classes you need to attend.</p>
+                <span class="card-link-text">Open Calculator &rarr;</span>
+            </a>
+
+            <!-- Feature Card 2: Admission Appointment -->
+            <a href="appointment.html" class="dashboard-card">
+                <h3>Admission Appointment</h3>
+                <p>Schedule an in-person or virtual consultation with the university admissions desk.</p>
+                <span class="card-link-text">Book Appointment &rarr;</span>
+            </a>
+
+            <!-- Feature Card 3: Bonafide Certificate Request -->
+            <a href="bonafide.html" class="dashboard-card">
+                <h3>Bonafide Certificate Request</h3>
+                <p>Submit a formal digital application to request an official student bonafide certificate.</p>
+                <span class="card-link-text">Apply Now &rarr;</span>
+            </a>
+
+            <!-- Feature Card 4: Anonymous Anti-Ragging Cell -->
+            <a href="ragging.html" class="dashboard-card">
+                <h3>Anonymous Anti-Ragging Cell</h3>
+                <p>Confidential and direct reporting mechanism for student grievances and campus safety.</p>
+                <span class="card-link-text">Report Incident &rarr;</span>
+            </a>
+
+            <!-- Feature Card 5: Official Club Directory (ISAC) -->
+            <a href="club.html" class="dashboard-card">
+                <h3>ISAC Club Directory</h3>
+                <p>Browse the official student panel directory of Indus Student Activity Cell (ISAC).</p>
+                <span class="card-link-text">View Directory &rarr;</span>
+            </a>
+
+            <!-- Feature Card 6: Campus Transport -->
+            <a href="transport.html" class="dashboard-card">
+                <h3>Campus Transport</h3>
+                <p>View bus routes, schedules, semester fees, and apply for a university bus pass.</p>
+                <span class="card-link-text">View Bus Routes &rarr;</span>
+            </a>
+
+            <!-- Feature Card 7: Campus Events & Notice Board -->
+            <a href="events.html" class="dashboard-card">
+                <h3>Campus Events &amp; Notice Board</h3>
+                <p>Stay informed about upcoming hackathons, tech fests, cultural nights, and club inductions.</p>
+                <span class="card-link-text">View Events &rarr;</span>
+            </a>
+
+            <!-- Feature Card 8: Digital Library -->
+            <a href="library.html" class="dashboard-card">
+                <h3>Digital Library</h3>
+                <p>Search academic books, download PDF e-books, and request physical book issues.</p>
+                <span class="card-link-text">Open Library &rarr;</span>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Indus University - Student Portal</p>
+    </footer>
+
+    <!-- Beginner-friendly Vanilla JavaScript Logout Handler -->
+    <script>
+        function handleLogout(event) {
+            // Prevent default instant navigation
+            event.preventDefault();
+
+            // Clear login status from localStorage
+            localStorage.removeItem('isLoggedIn');
+
+            // Redirect to main home page
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+
+</html>

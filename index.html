@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus University - Student Portal</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Top Announcement Ticker -->
+    <div class="top-ticker">
+        <div class="ticker-track">
+            <span>📢 Last date to apply for the merit scholarship: 15 October &nbsp;&nbsp;•&nbsp;&nbsp; 📢 Semester
+                results for summer 2026 are now live on the portal &nbsp;&nbsp;•&nbsp;&nbsp; 📢 Campus transport routes
+                updated — check the new stop timings &nbsp;&nbsp;•&nbsp;&nbsp; 📢 Digital Library: 1810+ new e-journals
+                added this month &nbsp;&nbsp;•&nbsp;&nbsp; 📢 iSAC club registrations close Friday — secure your spot
+                today &nbsp;&nbsp;•&nbsp;&nbsp;</span>
+            <span>📢 Last date to apply for the merit scholarship: 15 October &nbsp;&nbsp;•&nbsp;&nbsp; 📢 Semester
+                results for summer 2026 are now live on the portal &nbsp;&nbsp;•&nbsp;&nbsp; 📢 Campus transport routes
+                updated — check the new stop timings &nbsp;&nbsp;•&nbsp;&nbsp; 📢 Digital Library: 1810+ new e-journals
+                added this month &nbsp;&nbsp;•&nbsp;&nbsp; 📢 iSAC club registrations close Friday — secure your spot
+                today &nbsp;&nbsp;•&nbsp;&nbsp;</span>
+        </div>
+    </div>
+
+    <!-- Header and Navigation Bar -->
+    <header class="navbar">
+        <div class="brand-container">
+            <img src="OIP (1).jpg" alt="Indus Logo" class="brand-logo">
+            <a href="index.html" class="logo" style="color: darkblue; text-decoration: none;"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services-section">Services</a>
+            <a href="login.html" class="login-btn-round" id="loginNavBtn">Student Login</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Smart Portal for <span class="highlight">Smart Students</span></h1>
+        <p class="hero-subtitle">Your central gateway for academic attendance tracking, bus route logistics, club
+            directories, and campus library resources.</p>
+
+        <!-- Hero Action Buttons -->
+        <div class="hero-buttons">
+            <a href="login.html" class="btn-get-started" id="heroGetStartedBtn">Get Started</a>
+            <a href="#services-section" class="btn-explore explore-btn">Explore Services</a>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3>12,000+</h3>
+                <p>Active Students</p>
+            </div>
+            <div class="stat-box">
+                <h3>40+</h3>
+                <p>Student Clubs</p>
+            </div>
+            <div class="stat-box">
+                <h3>500+</h3>
+                <p>Top Recruiters</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section with 2x2 Grid -->
+    <section class="services-section" id="services-section">
+        <h2 class="services-title">Everything you need, one login away</h2>
+
+        <div class="services-grid">
+            <!-- Card 1: Attendance Calculator -->
+            <a href="login.html" class="service-card">
+                <h3>Attendance Calculator</h3>
+                <p>Track your subject-wise lecture attendance, verify the 75% exam criterion, and forecast future
+                    attendance.</p>
+                <span class="card-link-text">Open Calculator &rarr;</span>
+            </a>
+
+            <!-- Card 2: Campus Transport -->
+            <a href="login.html" class="service-card">
+                <h3>Campus Transport</h3>
+                <p>View all 7 major city bus routes, check exact morning pickup times, and apply for a semester bus
+                    pass.</p>
+                <span class="card-link-text">View Bus Routes &rarr;</span>
+            </a>
+
+            <!-- Card 3: Digital Library -->
+            <a href="login.html" class="service-card">
+                <h3>Digital Library</h3>
+                <p>Browse physical textbooks across departments, check live campus stock, and reserve books online.</p>
+                <span class="card-link-text">Search Library &rarr;</span>
+            </a>
+
+            <!-- Card 4: iSAC Club Directory -->
+            <a href="login.html" class="service-card">
+                <h3>iSAC Club Directory</h3>
+                <p>Connect with student activity heads, club coordinators, and domain leaders across technical,
+                    cultural, and sports cells.</p>
+                <span class="card-link-text">Explore Directory &rarr;</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="services-title" style="margin-bottom: 20px;">About the Student Portal</h2>
+        <p style="max-width: 800px; margin: 0 auto; color: dimgray; font-size: 16px; line-height: 1.6;">
+            The Indus University Student Portal is designed to streamline academic and campus operations into a single
+            cohesive interface. Students can securely manage their course credentials, calculate attendance forecasts,
+            access campus services, and connect with university administrative bodies with ease.
+        </p>
+    </section>
+
+    <!-- Global Standard Footer -->
+    <footer>
+        <p>&copy; 2026 Indus University - Student Portal</p>
+    </footer>
+
+    <!-- Beginner-friendly Vanilla JavaScript Authentication State Checker -->
+    <script>
+        // Check if the user is already authenticated via localStorage
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            var loginBtn = document.getElementById('loginNavBtn');
+            var heroBtn = document.getElementById('heroGetStartedBtn');
+
+            // Dynamically redirect buttons directly to the dashboard
+            if (loginBtn) {
+                loginBtn.innerText = 'Go to Dashboard';
+                loginBtn.href = 'dashboard.html';
+            }
+            if (heroBtn) {
+                heroBtn.innerText = 'Go to Dashboard';
+                heroBtn.href = 'dashboard.html';
+            }
+
+            // Also direct service cards to their internal destinations
+            var cards = document.querySelectorAll('.service-card');
+            var destinations = ['attendance.html', 'transport.html', 'library.html', 'club.html'];
+            for (var i = 0; i < cards.length && i < destinations.length; i++) {
+                cards[i].href = destinations[i];
+            }
+        }
+    </script>
+
+</body>
+
+</html>

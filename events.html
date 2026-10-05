@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus University - Events &amp; Notice Board</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header and Navigation Bar -->
+    <header class="navbar">
+        <div class="brand-container">
+            <img src="OIP (1).jpg" alt="Indus Logo" class="brand-logo">
+            <a href="index.html" class="logo" style="color: darkblue; text-decoration: none;"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="index.html" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="page-container" style="max-width: 800px;">
+        <!-- Back to Dashboard Link -->
+        <a href="dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+
+        <div class="portal-box">
+            <h2>Campus Notice Board</h2>
+            <p class="desc">Stay updated with official college events, fests, and student activities.</p>
+
+            <!-- Upcoming Events Section -->
+            <h3 style="color: darkblue; margin-bottom: 18px; border-bottom: 2px solid crimson; padding-bottom: 6px;">
+                Upcoming Events</h3>
+
+            <!-- Card 1: Tech Fest -->
+            <div class="event-card">
+                <span class="event-badge">Upcoming</span>
+                <h3>Indus Tech Fest 2026</h3>
+                <p class="event-meta">Date: October 24-25, 2026 | Venue: University Auditorium &amp; Labs</p>
+                <p>Join the biggest annual technical festival featuring 24-hour hackathons, robotics challenges, code
+                    debugging sprints, and guest lectures from industry experts.</p>
+            </div>
+
+            <!-- Card 2: Cultural Night -->
+            <div class="event-card">
+                <span class="event-badge">Upcoming</span>
+                <h3>Cultural Night: Tarang 2026</h3>
+                <p class="event-meta">Date: November 12, 2026 | Venue: Open Air Theatre (OAT)</p>
+                <p>An evening celebrating music, drama, fashion shows, and energetic dance performances by university
+                    student clubs and celebrity performers.</p>
+            </div>
+
+            <!-- Card 3: iSAC Induction -->
+            <div class="event-card">
+                <span class="event-badge">Upcoming</span>
+                <h3>iSAC Student Panel Induction Drive</h3>
+                <p class="event-meta">Date: November 20, 2026 | Venue: Seminar Hall B</p>
+                <p>Indus Student Activity Cell (iSAC) is recruiting fresh talent for Technical, Content, Designing,
+                    Media, and Event Management teams.</p>
+            </div>
+
+            <!-- Button to unhide past events using JavaScript -->
+            <div style="text-align: center;">
+                <button type="button" id="toggleBtn" class="toggle-btn" onclick="togglePastEvents()">Show Past
+                    Events</button>
+            </div>
+
+            <!-- Past Events Section (Hidden by default) -->
+            <div id="pastEventsContainer">
+                <h3
+                    style="color: dimgray; margin-bottom: 18px; border-bottom: 2px solid lightgray; padding-bottom: 6px;">
+                    Past Events Archive</h3>
+
+                <!-- Past Event Card 1 -->
+                <div class="event-card past-card">
+                    <span class="event-badge past-badge">Completed</span>
+                    <h3>Annual Sports Meet: Spardha</h3>
+                    <p class="event-meta" style="color: dimgray;">Date: January 15-18, 2026 | Venue: University Sports
+                        Complex</p>
+                    <p>Inter-departmental tournaments in Cricket, Football, Volleyball, Badminton, and Table Tennis with
+                        over 800 student participants.</p>
+                </div>
+
+                <!-- Past Event Card 2 -->
+                <div class="event-card past-card">
+                    <span class="event-badge past-badge">Completed</span>
+                    <h3>Indus Orientation &amp; Welcome Ceremony</h3>
+                    <p class="event-meta" style="color: dimgray;">Date: August 5, 2026 | Venue: Main Auditorium</p>
+                    <p>Official welcome induction for all incoming 1st-year undergraduate students, introducing faculty
+                        deans, campus facilities, and clubs.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Indus University - Student Portal</p>
+    </footer>
+
+    <!-- Beginner-friendly Vanilla JavaScript to Toggle Past Events -->
+    <script>
+        function togglePastEvents() {
+            // Get the past events container and the button element
+            var container = document.getElementById("pastEventsContainer");
+            var button = document.getElementById("toggleBtn");
+
+            // Check the current display status
+            if (container.style.display === "block") {
+                // Hide past events
+                container.style.display = "none";
+                button.innerText = "Show Past Events";
+            } else {
+                // Unhide past events using style.display = 'block'
+                container.style.display = "block";
+                button.innerText = "Hide Past Events";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

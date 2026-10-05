@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus University - Student Login</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header and Navigation Bar -->
+    <header class="navbar">
+        <div class="brand-container">
+            <img src="OIP (1).jpg" alt="Indus Logo" class="brand-logo">
+            <a href="index.html" class="logo" style="color: darkblue; text-decoration: none;"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="login.html" class="login-btn">Student Login</a>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <main class="login-section">
+        <div class="login-card">
+            <h2>Student Login</h2>
+            <p class="subtitle">Access your academic account</p>
+
+            <form onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label for="username">Username / ID</label>
+                    <input type="text" id="username" placeholder="Enter Username (e.g. IU No.)" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter Password" required>
+                </div>
+
+                <button type="submit" class="login-submit-btn">Login</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Indus University - Student Portal</p>
+    </footer>
+
+    <!-- Beginner-friendly Vanilla JavaScript validation -->
+    <script>
+        function handleLogin(event) {
+            // Prevent page refresh on form submit
+            event.preventDefault();
+
+            // Retrieve entered values from input fields
+            var user = document.getElementById("username").value;
+            var pass = document.getElementById("password").value;
+
+            // Check if credentials match exactly
+            if (user === "IU2441220057" && pass === "123") {
+                // Save login state in browser localStorage
+                localStorage.setItem('isLoggedIn', 'true');
+                // Redirect to dashboard page on success
+                window.location.href = "dashboard.html";
+            } else {
+                // Alert user on incorrect credentials
+                alert("Invalid Credentials");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

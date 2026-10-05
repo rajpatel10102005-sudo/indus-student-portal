@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus University - ISAC Club Directory</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header and Navigation Bar -->
+    <header class="navbar">
+        <div class="brand-container">
+            <img src="OIP (1).jpg" alt="Indus Logo" class="brand-logo">
+            <a href="index.html" class="logo" style="color: darkblue; text-decoration: none;"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="index.html" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="directory-container">
+        <!-- Back to Dashboard Link -->
+        <a href="dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+
+        <div class="portal-box">
+            <h2>Indus Student Activity Cell (iSAC)</h2>
+            <p class="desc">Official 2026-2027 Student Panel &amp; Club Directory</p>
+
+            <!-- Live Search Bar -->
+            <input type="text" id="searchInput" class="search-input" onkeyup="filterClubTable()"
+                placeholder="Search by student name or domain (e.g. Ved, Technical, Designing)...">
+
+            <!-- Responsive Table Container -->
+            <div class="table-wrapper">
+                <table class="directory-table" id="clubTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Domain</th>
+                            <th>Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Exact Official Rows from iSAC Panel Document -->
+                        <tr>
+                            <td><b>Ved Patel</b></td>
+                            <td><span class="role-badge">President</span></td>
+                            <td class="domain-tag">ISAC</td>
+                            <td><a href="mailto:ved.patel@isac.indusuni.ac.in"
+                                    class="email-link">ved.patel@isac.indusuni.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td><b>Takshil Prajapati</b></td>
+                            <td><span class="role-badge">Vice-President</span></td>
+                            <td class="domain-tag">ISAC</td>
+                            <td><a href="mailto:takshil.prajapati@isac.indusuni.ac.in"
+                                    class="email-link">takshil.prajapati@isac.indusuni.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td><b>Riya Bhavsar</b></td>
+                            <td><span class="role-badge">Lead</span></td>
+                            <td class="domain-tag">Technical</td>
+                            <td><a href="mailto:riya.bhavsar@isac.indusuni.ac.in"
+                                    class="email-link">riya.bhavsar@isac.indusuni.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td><b>Nitanshu Patel</b></td>
+                            <td><span class="role-badge">Lead</span></td>
+                            <td class="domain-tag">Content</td>
+                            <td><a href="mailto:nitanshu.patel@isac.indusuni.ac.in"
+                                    class="email-link">nitanshu.patel@isac.indusuni.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td><b>Suhani jangid</b></td>
+                            <td><span class="role-badge">Lead</span></td>
+                            <td class="domain-tag">Designing</td>
+                            <td><a href="mailto:suhani.jangid@isac.indusuni.ac.in"
+                                    class="email-link">suhani.jangid@isac.indusuni.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td><b>Harit Kuchara</b></td>
+                            <td><span class="role-badge">Lead</span></td>
+                            <td class="domain-tag">Photography</td>
+                            <td><a href="mailto:harit.kuchara@isac.indusuni.ac.in"
+                                    class="email-link">harit.kuchara@isac.indusuni.ac.in</a></td>
+                        </tr>
+                        <!-- Additional Official Panel Leads from Document -->
+                        <tr>
+                            <td>Sunehari Panchal</td>
+                            <td><span class="role-badge">General Secretary</span></td>
+                            <td class="domain-tag">ISAC</td>
+                            <td><a href="mailto:sunehari.p@isac.indusuni.ac.in"
+                                    class="email-link">sunehari.p@isac.indusuni.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>Maulik Sonigra</td>
+                            <td><span class="role-badge">General Secretary</span></td>
+                            <td class="domain-tag">ISAC</td>
+                            <td><a href="mailto:maulik.s@isac.indusuni.ac.in"
+                                    class="email-link">maulik.s@isac.indusuni.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>Arham Bhansali</td>
+                            <td><span class="role-badge">Lead</span></td>
+                            <td class="domain-tag">Technical</td>
+                            <td><a href="mailto:arham.b@isac.indusuni.ac.in"
+                                    class="email-link">arham.b@isac.indusuni.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>Het Prajapati</td>
+                            <td><span class="role-badge">Lead</span></td>
+                            <td class="domain-tag">Designing</td>
+                            <td><a href="mailto:het.p@isac.indusuni.ac.in"
+                                    class="email-link">het.p@isac.indusuni.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>Kartik Metaliya</td>
+                            <td><span class="role-badge">Lead</span></td>
+                            <td class="domain-tag">Reel Making &amp; Editing</td>
+                            <td><a href="mailto:kartik.m@isac.indusuni.ac.in"
+                                    class="email-link">kartik.m@isac.indusuni.ac.in</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Indus University - Student Portal</p>
+    </footer>
+
+    <!-- Beginner-friendly Vanilla JavaScript Table Search Filter -->
+    <script>
+        function filterClubTable() {
+            // Step 1: Read the user's typed search query and convert to lowercase
+            var input = document.getElementById("searchInput");
+            var filter = input.value.toLowerCase();
+
+            // Step 2: Grab the table and all rows
+            var table = document.getElementById("clubTable");
+            var tr = table.getElementsByTagName("tr");
+
+            // Step 3: Loop through all table rows, starting from index 1 (skipping table header)
+            for (var i = 1; i < tr.length; i++) {
+                // Cell 0 is "Name", Cell 2 is "Domain"
+                var tdName = tr[i].getElementsByTagName("td")[0];
+                var tdDomain = tr[i].getElementsByTagName("td")[2];
+
+                if (tdName && tdDomain) {
+                    var nameText = tdName.textContent || tdName.innerText;
+                    var domainText = tdDomain.textContent || tdDomain.innerText;
+
+                    // Step 4: Check if the search keyword exists in either Name OR Domain using includes() or indexOf()
+                    if (nameText.toLowerCase().includes(filter) || domainText.toLowerCase().includes(filter)) {
+                        tr[i].style.display = ""; // Show matching row
+                    } else {
+                        tr[i].style.display = "none"; // Hide non-matching row
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

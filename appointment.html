@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus University - Admission Appointment</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header and Navigation Bar -->
+    <header class="navbar">
+        <div class="brand-container">
+            <img src="OIP (1).jpg" alt="Indus Logo" class="brand-logo">
+            <a href="index.html" class="logo" style="color: darkblue; text-decoration: none;"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="index.html" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="page-container">
+        <!-- Back to Dashboard Link -->
+        <a href="dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+
+        <div class="portal-box">
+            <h2>Book Admission Appointment</h2>
+            <p class="desc">Schedule a one-on-one counseling session with our university faculty.</p>
+
+            <!-- Appointment Form -->
+            <form id="appointmentForm" onsubmit="bookAppointment(event)">
+                <!-- Full Name Field -->
+                <div class="input-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" placeholder="Enter student / guardian name" required>
+                </div>
+
+                <!-- Phone Number Field -->
+                <div class="input-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" id="phoneNumber" placeholder="Enter 10-digit mobile number" required>
+                </div>
+
+                <!-- Preferred Date Field -->
+                <div class="input-group">
+                    <label for="appointmentDate">Preferred Date:</label>
+                    <input type="date" id="appointmentDate" required>
+                </div>
+
+                <!-- Department Dropdown -->
+                <div class="input-group">
+                    <label for="department">Select Department:</label>
+                    <select id="department" required>
+                        <option value="">-- Choose Department --</option>
+                        <option value="IT">Information Technology (IT)</option>
+                        <option value="CS">Computer Science (CS)</option>
+                        <option value="Mechanical">Mechanical Engineering</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="calc-btn">Book Appointment</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Indus University - Student Portal</p>
+    </footer>
+
+    <!-- Beginner-friendly Vanilla JavaScript Form Handler -->
+    <script>
+        function bookAppointment(event) {
+            // Prevent the default form submission (stops page refresh)
+            event.preventDefault();
+
+            // Display success message
+            alert('Your appointment has been booked successfully!');
+
+            // Clear the form fields after successful booking
+            document.getElementById("appointmentForm").reset();
+        }
+    </script>
+
+</body>
+
+</html>
